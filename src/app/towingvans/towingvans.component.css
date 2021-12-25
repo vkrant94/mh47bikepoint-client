@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+.trans-table-header {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+  align-items: center;
+}
+
+.trans-table-header .actions {
+  justify-self: end;
+}

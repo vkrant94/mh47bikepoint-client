@@ -13,7 +13,13 @@ const MENUITEMS = [
     state: "transactions",
     type: "link",
     name: "Transactions",
-    icon: "crop_7_5",
+    icon: "paid",
+  },
+  {
+    state: "towingvans",
+    type: "link",
+    name: "Towing Vans",
+    icon: "local_shipping",
   },
 ];
 

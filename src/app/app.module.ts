@@ -18,6 +18,8 @@ import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
 import { TransactionsComponent } from "./transactions/transactions.component";
 import { CreateTransactionComponent } from './transactions/create-transaction/create-transaction.component';
+import { TowingvansComponent } from './towingvans/towingvans.component';
+import { CreateTowingvanComponent } from './towingvans/create-towingvan/create-towingvan.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { CreateTransactionComponent } from './transactions/create-transaction/cr
     AppSidebarComponent,
     TransactionsComponent,
     CreateTransactionComponent,
+    TowingvansComponent,
+    CreateTowingvanComponent,
   ],
   imports: [
     BrowserModule,
