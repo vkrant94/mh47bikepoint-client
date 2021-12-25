@@ -1,12 +1,16 @@
 <h1 mat-dialog-title>Add Towing Van</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
-    <mat-label>First Name</mat-label>
-    <input matInput [(ngModel)]="data.firstName" />
+    <mat-label>Van Name</mat-label>
+    <input matInput [(ngModel)]="data.van_name" />
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Last Name</mat-label>
-    <input matInput [(ngModel)]="data.lastName" />
+    <mat-label>Driver Name</mat-label>
+    <input matInput [(ngModel)]="data.driver_name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Van Number</mat-label>
+    <input matInput [(ngModel)]="data.van_number" />
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

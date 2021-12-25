@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { DialogData } from "../towingvans.component";
+import { TowingVanModel } from "../towingvans.component";
 
 @Component({
   selector: "app-create-towingvan",
@@ -10,7 +10,7 @@ import { DialogData } from "../towingvans.component";
 export class CreateTowingvanComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CreateTowingvanComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: TowingVanModel
   ) {}
 
   ngOnInit(): void {}
