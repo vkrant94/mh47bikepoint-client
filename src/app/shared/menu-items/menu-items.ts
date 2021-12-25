@@ -21,6 +21,12 @@ const MENUITEMS = [
     name: "Towing Vans",
     icon: "local_shipping",
   },
+  {
+    state: "customers",
+    type: "link",
+    name: "Customers",
+    icon: "people",
+  },
 ];
 
 @Injectable()

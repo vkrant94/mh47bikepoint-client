@@ -11,3 +11,9 @@ table {
 .trans-table-header .actions {
   justify-self: end;
 }
+
+.no-records-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

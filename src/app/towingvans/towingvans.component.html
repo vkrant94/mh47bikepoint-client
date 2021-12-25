@@ -60,6 +60,12 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
+      <div class="no-records-container" *ngIf="towingVans.length === 0">
+        <button mat-icon-button class="actions">
+          <mat-icon>info</mat-icon></button
+        >No Records Found
+      </div>
+
       <mat-paginator
         [pageSizeOptions]="[5, 10, 20]"
         showFirstLastButtons
