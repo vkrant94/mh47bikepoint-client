@@ -9,6 +9,7 @@ import { CustomerModel } from "../customers.component";
   styleUrls: ["./create-customer.component.css"],
 })
 export class CreateCustomerComponent implements OnInit {
+  isLoading: boolean = false;
   constructor(
     public dialogRef: MatDialogRef<CreateCustomerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CustomerModel,
@@ -22,9 +23,11 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   processFile(event: any) {
+    this.isLoading = true;
     const file: File = event.target.files[0];
     this.fileUploadService.upload(file).subscribe((res: any) => {
-      this.data.image_url = res.link;
+      this.isLoading = false;
+      this.data.thumnail_url = res.secure_url;
     });
   }
 }

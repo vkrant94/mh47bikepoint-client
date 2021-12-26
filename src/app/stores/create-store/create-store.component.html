@@ -1,16 +1,9 @@
-<div *ngIf="isLoading">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-</div>
-<div *ngIf="!isLoading">
-  <h1 mat-dialog-title>Add Customer</h1>
+<div>
+  <h1 mat-dialog-title>Add Store</h1>
   <div mat-dialog-content>
     <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input matInput [(ngModel)]="data.first_name" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input matInput [(ngModel)]="data.last_name" />
+      <mat-label>Store Name</mat-label>
+      <input matInput [(ngModel)]="data.store_name" />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Phone</mat-label>
@@ -40,22 +33,6 @@
       <mat-label>Zip Code</mat-label>
       <input type="number" matInput [(ngModel)]="data.zip_code" />
     </mat-form-field>
-
-    <button (click)="fileInput.click()">
-      <mat-icon>library_add</mat-icon>
-      <span>Select</span>
-      <input
-        #fileInput
-        type="file"
-        (change)="processFile($event)"
-        style="display: none"
-      />
-    </button>
-    <div class="user-profile">
-      <div class="profile-img">
-        <img [src]="data.thumnail_url" alt="user" />
-      </div>
-    </div>
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>

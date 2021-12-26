@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { CustomersComponent } from "../customers/customers.component";
+import { StoresComponent } from "../stores/stores.component";
 import { TowingvansComponent } from "../towingvans/towingvans.component";
 import { TransactionsComponent } from "../transactions/transactions.component";
 
@@ -15,5 +16,9 @@ export const MaterialRoutes: Routes = [
   {
     path: "customers",
     component: CustomersComponent,
+  },
+  {
+    path: "stores",
+    component: StoresComponent,
   },
 ];

@@ -1,12 +1,12 @@
 <mat-card>
   <mat-card-content>
     <div class="trans-table-header">
-      <mat-card-title>Customers</mat-card-title>
+      <mat-card-title>Stores</mat-card-title>
       <div></div>
       <button
         mat-icon-button
         class="actions"
-        title="Add Customer"
+        title="Add Store"
         (click)="openDialog()"
       >
         <mat-icon>add_circle</mat-icon>
@@ -14,16 +14,10 @@
     </div>
     <div>
       <table mat-table [dataSource]="dataSource" matSort>
-        <!-- first_name Column -->
-        <ng-container matColumnDef="first_name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
-        </ng-container>
-
-        <!-- last_name Column -->
-        <ng-container matColumnDef="last_name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
+        <!-- store_name Column -->
+        <ng-container matColumnDef="store_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Store Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.store_name }}</td>
         </ng-container>
 
         <!-- phone Column -->
@@ -79,16 +73,16 @@
             <button
               mat-icon-button
               class="actions"
-              title="Update Towing Van"
-              (click)="editCustomer(element.customer_id)"
+              title="Update Store"
+              (click)="editStore(element.store_id)"
             >
               <mat-icon>edit</mat-icon>
             </button>
             <button
               mat-icon-button
               class="actions"
-              title="Add Towing Van"
-              (click)="deleteCustomer(element.customer_id)"
+              title="Delete Store"
+              (click)="deleteStore(element.store_id)"
             >
               <mat-icon>delete</mat-icon>
             </button>

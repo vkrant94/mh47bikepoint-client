@@ -50,7 +50,7 @@ export class CustomersComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe((formData) => {
       if (formData) {
-        const { van_id, ...remainingData } = formData;
+        const { customer_id, ...remainingData } = formData;
         this.customerService.createCustomer(remainingData).subscribe((res) => {
           this.openSnackBar("Customer added successfully..!");
           this.loadCustomers();
@@ -110,5 +110,5 @@ export class CustomerModel {
   city = "";
   state = "";
   zip_code = "";
-  image_url = "";
+  thumnail_url = "";
 }
