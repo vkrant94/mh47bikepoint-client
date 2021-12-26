@@ -39,6 +39,12 @@ const MENUITEMS = [
     name: "Garages",
     icon: "garage",
   },
+  {
+    state: "staffs",
+    type: "link",
+    name: "Staffs",
+    icon: "engineering",
+  },
 ];
 
 @Injectable()

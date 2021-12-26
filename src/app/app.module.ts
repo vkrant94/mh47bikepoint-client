@@ -29,6 +29,7 @@ import { CreateStoreComponent } from './stores/create-store/create-store.compone
 import { GaragesComponent } from './garages/garages.component';
 import { CreateGarageComponent } from './garages/create-garage/create-garage.component';
 import { StaffsComponent } from './staffs/staffs.component';
+import { CreateStaffComponent } from './staffs/create-staff/create-staff.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { StaffsComponent } from './staffs/staffs.component';
     GaragesComponent,
     CreateGarageComponent,
     StaffsComponent,
+    CreateStaffComponent,
   ],
   imports: [
     BrowserModule,
