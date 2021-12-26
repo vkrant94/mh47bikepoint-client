@@ -1,12 +1,12 @@
 <mat-card>
   <mat-card-content>
     <div class="trans-table-header">
-      <mat-card-title>Stores</mat-card-title>
+      <mat-card-title>Garages</mat-card-title>
       <div></div>
       <button
         mat-icon-button
         class="actions"
-        title="Add Store"
+        title="Add Garage"
         (click)="openDialog()"
       >
         <mat-icon>add_circle</mat-icon>
@@ -14,10 +14,10 @@
     </div>
     <div>
       <table mat-table [dataSource]="dataSource" matSort>
-        <!-- store_name Column -->
-        <ng-container matColumnDef="store_name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Store Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.store_name }}</td>
+        <!-- garage_name Column -->
+        <ng-container matColumnDef="garage_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Garage Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.garage_name }}</td>
         </ng-container>
 
         <!-- phone Column -->
@@ -73,16 +73,16 @@
             <button
               mat-icon-button
               class="actions"
-              title="Update Store"
-              (click)="editStore(element.store_id)"
+              title="Update Garage"
+              (click)="editGarage(element.garage_id)"
             >
               <mat-icon>edit</mat-icon>
             </button>
             <button
               mat-icon-button
               class="actions"
-              title="Delete Store"
-              (click)="deleteStore(element.store_id)"
+              title="Delete Garage"
+              (click)="deleteGarage(element.garage_id)"
             >
               <mat-icon>delete</mat-icon>
             </button>
@@ -92,7 +92,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
-      <div class="no-records-container" *ngIf="stores.length === 0">
+      <div class="no-records-container" *ngIf="garages.length === 0">
         <button mat-icon-button class="actions">
           <mat-icon>info</mat-icon></button
         >No Records Found

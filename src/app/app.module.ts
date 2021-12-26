@@ -26,6 +26,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { StoresComponent } from './stores/stores.component';
 import { CreateStoreComponent } from './stores/create-store/create-store.component';
+import { GaragesComponent } from './garages/garages.component';
+import { CreateGarageComponent } from './garages/create-garage/create-garage.component';
+import { StaffsComponent } from './staffs/staffs.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { CreateStoreComponent } from './stores/create-store/create-store.compone
     CreateCustomerComponent,
     StoresComponent,
     CreateStoreComponent,
+    GaragesComponent,
+    CreateGarageComponent,
+    StaffsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -24,8 +24,8 @@ export class StoresComponent implements AfterViewInit {
     "zip_code",
     "actions",
   ];
-  customers: StoreModel[] = [];
-  dataSource = new MatTableDataSource<StoreModel>(this.customers);
+  stores: StoreModel[] = [];
+  dataSource = new MatTableDataSource<StoreModel>(this.stores);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -60,8 +60,8 @@ export class StoresComponent implements AfterViewInit {
 
   loadStores(): void {
     this.storeService.getStores().subscribe((res) => {
-      this.customers = res as StoreModel[];
-      this.dataSource = new MatTableDataSource<StoreModel>(this.customers);
+      this.stores = res as StoreModel[];
+      this.dataSource = new MatTableDataSource<StoreModel>(this.stores);
     });
   }
 
@@ -73,7 +73,7 @@ export class StoresComponent implements AfterViewInit {
   }
 
   editStore(id: string): void {
-    const vanData = this.customers.find((t) => t.store_id === id);
+    const vanData = this.stores.find((t) => t.store_id === id);
     const dialogRef = this.dialog.open(CreateStoreComponent, {
       width: "800px",
       data: vanData,

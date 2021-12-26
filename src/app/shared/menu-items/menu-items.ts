@@ -33,6 +33,12 @@ const MENUITEMS = [
     name: "Stores",
     icon: "store",
   },
+  {
+    state: "garages",
+    type: "link",
+    name: "Garages",
+    icon: "garage",
+  },
 ];
 
 @Injectable()
