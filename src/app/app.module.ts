@@ -17,11 +17,13 @@ import { DemoMaterialModule } from "./demo-material-module";
 import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
 import { TransactionsComponent } from "./transactions/transactions.component";
-import { CreateTransactionComponent } from './transactions/create-transaction/create-transaction.component';
-import { TowingvansComponent } from './towingvans/towingvans.component';
-import { CreateTowingvanComponent } from './towingvans/create-towingvan/create-towingvan.component';
-import { CustomersComponent } from './customers/customers.component';
-import { CreateCustomerComponent } from './customers/create-customer/create-customer.component';
+import { CreateTransactionComponent } from "./transactions/create-transaction/create-transaction.component";
+import { TowingvansComponent } from "./towingvans/towingvans.component";
+import { CreateTowingvanComponent } from "./towingvans/create-towingvan/create-towingvan.component";
+import { CustomersComponent } from "./customers/customers.component";
+import { CreateCustomerComponent } from "./customers/create-customer/create-customer.component";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { CreateCustomerComponent } from './customers/create-customer/create-cust
     BrowserAnimationsModule,
     DemoMaterialModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,

@@ -44,10 +44,13 @@ export class TowingvansComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe((formData) => {
       if (formData) {
-        this.towingVanService.createTowingVan(formData).subscribe((res) => {
-          this.openSnackBar("Towing Van added successfully..!");
-          this.loadTowingVans();
-        });
+        const { van_id, ...remainingData } = formData;
+        this.towingVanService
+          .createTowingVan(remainingData)
+          .subscribe((res) => {
+            this.openSnackBar("Towing Van added successfully..!");
+            this.loadTowingVans();
+          });
       }
     });
   }
