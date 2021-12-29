@@ -6,6 +6,7 @@ import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { StaffService } from "../_services/staff.service";
 import { CreateStaffComponent } from "./create-staff/create-staff.component";
+import { CommonService } from "../_services/common.service";
 
 @Component({
   selector: "app-staffs",
@@ -36,7 +37,8 @@ export class StaffsComponent implements AfterViewInit {
   constructor(
     public dialog: MatDialog,
     private staffService: StaffService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private commonService: CommonService
   ) {}
 
   ngAfterViewInit() {
@@ -53,8 +55,8 @@ export class StaffsComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe((formData) => {
       if (formData) {
-        const { garage_id, ...remainingData } = formData;
-        this.staffService.createStaff(remainingData).subscribe((res) => {
+        let staffFormData = this.commonService.filterObject(formData);
+        this.staffService.createStaff(staffFormData).subscribe((res) => {
           this.openSnackBar("Staff added successfully..!");
           this.loadStaffs();
         });

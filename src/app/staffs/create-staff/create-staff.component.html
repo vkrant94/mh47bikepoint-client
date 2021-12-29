@@ -1,1 +1,91 @@
-<p>create-staff works!</p>
+<div *ngIf="isLoading">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<div *ngIf="!isLoading">
+  <h1 mat-dialog-title>Add Staff member</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="data.first_name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="data.last_name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone</mat-label>
+      <input type="number" matInput [(ngModel)]="data.phone" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [(ngModel)]="data.email" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Address Line 1</mat-label>
+      <input type="text" matInput [(ngModel)]="data.address_line1" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Address Line 2</mat-label>
+      <input type="text" matInput [(ngModel)]="data.address_line2" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input type="text" matInput [(ngModel)]="data.city" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <input type="text" matInput [(ngModel)]="data.state" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Is Active</mat-label>
+      <mat-select [(ngModel)]="data.active" name="active">
+        <mat-option *ngFor="let status of statuses" [value]="status.value">
+          {{ status.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Assigned Store</mat-label>
+      <mat-select [(ngModel)]="data.store_id" name="store_id">
+        <mat-option *ngFor="let store of stores" [value]="store.value">
+          {{ store.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Designation</mat-label>
+      <mat-select [(ngModel)]="data.designation" name="designation">
+        <mat-option *ngFor="let position of positions" [value]="position.value">
+          {{ position.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Reporting Manager</mat-label>
+      <mat-select [(ngModel)]="data.manager_id" name="manager">
+        <mat-option *ngFor="let manager of managers" [value]="manager.value">
+          {{ manager.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button (click)="fileInput.click()">
+      <mat-icon>library_add</mat-icon>
+      <span>Select</span>
+      <input
+        #fileInput
+        type="file"
+        (change)="processFile($event)"
+        style="display: none"
+      />
+    </button>
+    <div class="user-profile">
+      <div class="profile-img">
+        <img [src]="data.thumnail_url" alt="user" />
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  </div>
+</div>

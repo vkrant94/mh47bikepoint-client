@@ -8,6 +8,7 @@ import { BASE_URL } from "../app.constants";
 export class StaffService {
   STAFFS: string = `${BASE_URL}/staffs`;
   STAFF: string = `${BASE_URL}/staffs/{0}`;
+  STAFF_DEFAULTS: string = `${BASE_URL}/staffs/defaults`;
   constructor(private http: HttpClient) {}
 
   getStaffs() {
@@ -28,5 +29,9 @@ export class StaffService {
 
   deleteStaff(id: string) {
     return this.http.delete(this.STAFF.replace("{0}", id));
+  }
+
+  staffDefaults() {
+    return this.http.get(this.STAFF_DEFAULTS);
   }
 }
