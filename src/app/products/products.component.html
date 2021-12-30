@@ -1,12 +1,12 @@
 <mat-card>
   <mat-card-content>
     <div class="trans-table-header">
-      <mat-card-title>Staffs</mat-card-title>
+      <mat-card-title>Products</mat-card-title>
       <div></div>
       <button
         mat-icon-button
         class="actions"
-        title="Add Staff"
+        title="Add Product"
         (click)="openDialog()"
       >
         <mat-icon>add_circle</mat-icon>
@@ -14,55 +14,78 @@
     </div>
     <div>
       <table mat-table [dataSource]="dataSource" matSort>
-        <!-- first_name Column -->
-        <ng-container matColumnDef="first_name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
+        <!-- product_name Column -->
+        <ng-container matColumnDef="product_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.product_name }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="last_name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
+        <!-- brand_name Column -->
+        <ng-container matColumnDef="brand_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Brand</th>
+          <td mat-cell *matCellDef="let element">{{ element.brand_name }}</td>
         </ng-container>
 
-        <!-- phone Column -->
-        <ng-container matColumnDef="phone">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
-          <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
-        </ng-container>
-
-        <!-- email Column -->
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-        </ng-container>
-
-        <!-- address_line1 Column -->
-        <ng-container matColumnDef="address_line1">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Address 1</th>
+        <!-- category_name Column -->
+        <ng-container matColumnDef="category_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.address_line1 }}
+            {{ element.category_name }}
           </td>
         </ng-container>
 
-        <!-- address_line2 Column -->
-        <ng-container matColumnDef="address_line2">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Address 2</th>
+        <!-- model_year Column -->
+        <ng-container matColumnDef="model_year">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Model Year</th>
+          <td mat-cell *matCellDef="let element">{{ element.model_year }}</td>
+        </ng-container>
+
+        <!-- list_price Column -->
+        <ng-container matColumnDef="list_price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>List Price</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.address_line2 }}
+            {{ element.list_price }}
           </td>
         </ng-container>
 
-        <!-- city Column -->
-        <ng-container matColumnDef="city">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
-          <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+        <!-- model_number Column -->
+        <ng-container matColumnDef="model_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Model No.</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.model_number }}
+          </td>
         </ng-container>
 
-        <!-- state Column -->
-        <ng-container matColumnDef="state">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
-          <td mat-cell *matCellDef="let element">{{ element.state }}</td>
+        <!-- owner_name Column -->
+        <ng-container matColumnDef="owner_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Owner</th>
+          <td mat-cell *matCellDef="let element">{{ element.owner_name }}</td>
+        </ng-container>
+
+        <!-- rc_number Column -->
+        <ng-container matColumnDef="rc_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>RC Number</th>
+          <td mat-cell *matCellDef="let element">{{ element.rc_number }}</td>
+        </ng-container>
+
+        <!-- chassi_number Column -->
+        <ng-container matColumnDef="chassi_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Chassi Number
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.chassi_number }}
+          </td>
+        </ng-container>
+
+        <!-- vehicle_number Column -->
+        <ng-container matColumnDef="vehicle_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Vehicle Number
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.vehicle_number }}
+          </td>
         </ng-container>
 
         <!-- active Column -->
@@ -111,7 +134,7 @@
               color="primary"
               class="actions"
               title="Update Garage"
-              (click)="editStaff(element.staff_id)"
+              (click)="editProduct(element.product_id)"
             >
               <mat-icon>edit</mat-icon>
             </button>
@@ -120,7 +143,7 @@
               mat-icon-button
               class="actions"
               title="Delete Garage"
-              (click)="deleteStaff(element.staff_id)"
+              (click)="deleteProduct(element.product_id)"
             >
               <mat-icon>delete</mat-icon>
             </button>

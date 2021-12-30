@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { DefaultSelect } from "src/app/app.constants";
+import { PicklistModel } from "src/app/_models/PicklistModel";
+import { CommonService } from "src/app/_services/common.service";
 import { FileUploadService } from "src/app/_services/fileUpload.service";
 import { StaffService } from "src/app/_services/staff.service";
 import { StaffModel } from "../staffs.component";
@@ -29,21 +31,26 @@ export class CreateStaffComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateStaffComponent>,
     @Inject(MAT_DIALOG_DATA) public data: StaffModel,
     private staffService: StaffService,
-    private fileUploadService: FileUploadService
+    private fileUploadService: FileUploadService,
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {
     this.staffService.staffDefaults().subscribe((res: any) => {
       const { stores, managers } = res;
-      this.stores = stores.map((s: any) => {
-        return { label: s.store_name, value: s.store_id };
-      });
+      this.stores = this.commonService.populatePicklistOptions(
+        stores,
+        "store_name",
+        "store_id"
+      );
 
       this.managers = [
         ...this.managers,
-        ...managers.map((m: any) => {
-          return { label: m.manager_name, value: m.manager_id };
-        }),
+        ...this.commonService.populatePicklistOptions(
+          managers,
+          "manager_name",
+          "manager_id"
+        ),
       ];
     });
   }
@@ -60,9 +67,4 @@ export class CreateStaffComponent implements OnInit {
       this.data.thumnail_url = res.secure_url;
     });
   }
-}
-
-export interface PicklistModel {
-  label: string;
-  value: any;
 }

@@ -8,6 +8,9 @@ export class CommonService {
     let filteredObject: any = {};
 
     Object.keys(object).forEach(function (key) {
+      if (object[key] instanceof Date) {
+        object[key] = object[key].toISOString();
+      }
       if (
         typeof object[key] != "undefined" &&
         object[key] != null &&
@@ -18,5 +21,11 @@ export class CommonService {
     });
 
     return filteredObject;
+  }
+
+  populatePicklistOptions(items: any[], labelKey: string, valueKey: string) {
+    return items.map((item) => {
+      return { label: item[labelKey], value: item[valueKey] };
+    });
   }
 }

@@ -1,0 +1,115 @@
+<div>
+  <h1 mat-dialog-title>Add Product</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Brand</mat-label>
+      <mat-select [(ngModel)]="data.brand_id" name="brand_id">
+        <mat-option *ngFor="let brand of brands" [value]="brand.value">
+          {{ brand.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Name</mat-label>
+      <input matInput [(ngModel)]="data.product_name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select [(ngModel)]="data.category_id" name="category_id">
+        <mat-option
+          *ngFor="let category of bikeCategories"
+          [value]="category.value"
+        >
+          {{ category.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Model Year</mat-label>
+      <input type="number" matInput [(ngModel)]="data.model_year" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>List Price</mat-label>
+      <input type="number" matInput [(ngModel)]="data.list_price" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Model Number</mat-label>
+      <input type="number" matInput [(ngModel)]="data.model_number" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Owner</mat-label>
+      <mat-select [(ngModel)]="data.owner_id" name="owner_id">
+        <mat-option *ngFor="let customer of customers" [value]="customer.value">
+          {{ customer.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>RC Number</mat-label>
+      <input type="number" matInput [(ngModel)]="data.rc_number" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Chassi Number</mat-label>
+      <input type="text" matInput [(ngModel)]="data.chassi_number" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Colour</mat-label>
+      <input type="text" matInput [(ngModel)]="data.colour" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Vehicle Number</mat-label>
+      <input type="text" matInput [(ngModel)]="data.vehicle_number" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Insuarance Company</mat-label>
+      <input type="text" matInput [(ngModel)]="data.insuarance_company" />
+    </mat-form-field>
+    <!-- DATE PICKER -->
+    <mat-form-field appearance="fill">
+      <mat-label>Insuarance Expiry</mat-label>
+      <input
+        matInput
+        [matDatepicker]="insuarance_expiry"
+        [(ngModel)]="data.insuarance_expiry"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="insuarance_expiry"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #insuarance_expiry></mat-datepicker>
+    </mat-form-field>
+    <!-- DATE PICKER -->
+    <mat-form-field appearance="fill">
+      <mat-label>PUC Expiry</mat-label>
+      <input
+        matInput
+        [matDatepicker]="puc_expiry"
+        [(ngModel)]="data.puc_expiry"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="puc_expiry"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #puc_expiry></mat-datepicker>
+    </mat-form-field>
+    <button (click)="fileInput.click()">
+      <mat-icon>library_add</mat-icon>
+      <span>Select</span>
+      <input
+        #fileInput
+        type="file"
+        (change)="processFile($event)"
+        style="display: none"
+      />
+    </button>
+    <div class="user-profile">
+      <div class="profile-img">
+        <img [src]="data.thumnail_url" alt="user" />
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  </div>
+</div>

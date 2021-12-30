@@ -24,12 +24,15 @@ import { CustomersComponent } from "./customers/customers.component";
 import { CreateCustomerComponent } from "./customers/create-customer/create-customer.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { StoresComponent } from './stores/stores.component';
-import { CreateStoreComponent } from './stores/create-store/create-store.component';
-import { GaragesComponent } from './garages/garages.component';
-import { CreateGarageComponent } from './garages/create-garage/create-garage.component';
-import { StaffsComponent } from './staffs/staffs.component';
-import { CreateStaffComponent } from './staffs/create-staff/create-staff.component';
+import { StoresComponent } from "./stores/stores.component";
+import { CreateStoreComponent } from "./stores/create-store/create-store.component";
+import { GaragesComponent } from "./garages/garages.component";
+import { CreateGarageComponent } from "./garages/create-garage/create-garage.component";
+import { StaffsComponent } from "./staffs/staffs.component";
+import { CreateStaffComponent } from "./staffs/create-staff/create-staff.component";
+import { ProductsComponent } from "./products/products.component";
+import { CreateProductComponent } from "./products/create-product/create-product.component";
+import { ChartsModule } from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -50,6 +53,8 @@ import { CreateStaffComponent } from './staffs/create-staff/create-staff.compone
     CreateGarageComponent,
     StaffsComponent,
     CreateStaffComponent,
+    ProductsComponent,
+    CreateProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +66,7 @@ import { CreateStaffComponent } from './staffs/create-staff/create-staff.compone
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
+    ChartsModule,
     RouterModule.forRoot(AppRoutes),
   ],
   providers: [
