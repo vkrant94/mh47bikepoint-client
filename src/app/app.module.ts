@@ -32,7 +32,6 @@ import { StaffsComponent } from "./staffs/staffs.component";
 import { CreateStaffComponent } from "./staffs/create-staff/create-staff.component";
 import { ProductsComponent } from "./products/products.component";
 import { CreateProductComponent } from "./products/create-product/create-product.component";
-import { ChartsModule } from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -66,7 +65,6 @@ import { ChartsModule } from "ng2-charts";
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
-    ChartsModule,
     RouterModule.forRoot(AppRoutes),
   ],
   providers: [
