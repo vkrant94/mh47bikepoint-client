@@ -33,7 +33,7 @@ export class ProductsComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
     public dialog: MatDialog,
-    private staffService: ProductService,
+    private productService: ProductService,
     private _snackBar: MatSnackBar,
     private commonService: CommonService
   ) {}
@@ -53,7 +53,7 @@ export class ProductsComponent implements AfterViewInit {
     dialogRef.afterClosed().subscribe((formData) => {
       if (formData) {
         let staffFormData = this.commonService.filterObject(formData);
-        this.staffService.createProduct(staffFormData).subscribe((res) => {
+        this.productService.createProduct(staffFormData).subscribe((res) => {
           this.openSnackBar("Product added successfully..!");
           this.loadProducts();
         });
@@ -62,33 +62,37 @@ export class ProductsComponent implements AfterViewInit {
   }
 
   loadProducts(): void {
-    this.staffService.getProducts().subscribe((res) => {
+    this.productService.getProducts().subscribe((res) => {
       this.staffs = res as ProductModel[];
       this.dataSource = new MatTableDataSource<ProductModel>(this.staffs);
     });
   }
 
   deleteProduct(id: string): void {
-    this.staffService.deleteProduct(id).subscribe((res) => {
+    this.productService.deleteProduct(id).subscribe((res) => {
       this.openSnackBar("Product deleted successfully..!");
       this.loadProducts();
     });
   }
 
   editProduct(id: string): void {
-    const vanData = this.staffs.find((t) => t.product_id === id);
-    const dialogRef = this.dialog.open(CreateProductComponent, {
-      width: "800px",
-      data: vanData,
-    });
+    this.productService.getProduct(id).subscribe((vanData) => {
+      const dialogRef = this.dialog.open(CreateProductComponent, {
+        width: "800px",
+        data: vanData,
+      });
 
-    dialogRef.afterClosed().subscribe((formData) => {
-      if (formData) {
-        this.staffService.updateProduct(id, formData).subscribe((res) => {
-          this.openSnackBar("Product updated successfully..!");
-          this.loadProducts();
-        });
-      }
+      dialogRef.afterClosed().subscribe((formData) => {
+        if (formData) {
+          const filteredData = this.commonService.filterObject(formData);
+          this.productService
+            .updateProduct(id, filteredData)
+            .subscribe((res) => {
+              this.openSnackBar("Product updated successfully..!");
+              this.loadProducts();
+            });
+        }
+      });
     });
   }
 

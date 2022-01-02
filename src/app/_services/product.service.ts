@@ -8,7 +8,7 @@ import { BASE_URL } from "../app.constants";
 export class ProductService {
   PRODUCTS: string = `${BASE_URL}/products`;
   PRODUCT: string = `${BASE_URL}/products/{0}`;
-  PRODUCT_DEFAULTS: string = `${BASE_URL}/products/defaults`;
+  PRODUCT_DEFAULTS: string = `${BASE_URL}/defaults/products`;
   constructor(private http: HttpClient) {}
 
   getProducts() {

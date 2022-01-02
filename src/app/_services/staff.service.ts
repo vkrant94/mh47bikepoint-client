@@ -8,7 +8,7 @@ import { BASE_URL } from "../app.constants";
 export class StaffService {
   STAFFS: string = `${BASE_URL}/staffs`;
   STAFF: string = `${BASE_URL}/staffs/{0}`;
-  STAFF_DEFAULTS: string = `${BASE_URL}/staffs/defaults`;
+  STAFF_DEFAULTS: string = `${BASE_URL}/defaults/staffs`;
   constructor(private http: HttpClient) {}
 
   getStaffs() {

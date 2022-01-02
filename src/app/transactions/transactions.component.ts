@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import { AfterViewInit, Component } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatTableDataSource } from "@angular/material/table";
+import { CommonService } from "../_services/common.service";
+import { TransactionService } from "../_services/transaction.service";
 import { CreateTransactionComponent } from "./create-transaction/create-transaction.component";
 
 @Component({
@@ -11,64 +12,114 @@ import { CreateTransactionComponent } from "./create-transaction/create-transact
   styleUrls: ["./transactions.component.css"],
 })
 export class TransactionsComponent implements AfterViewInit {
-  displayedColumns: string[] = ["position", "name", "weight", "symbol"];
-  dataSource = new MatTableDataSource<Transaction>(ELEMENT_DATA);
-  FirstName: string = "";
-  LastName: string = "";
+  displayedColumns: string[] = [
+    "start_date",
+    "product_name",
+    "transaction_type",
+    "transaction_status",
+    "invoice_number",
+    "trans_amount",
+    "actions",
+  ];
+  stores: TransactionModel[] = [];
+  dataSource = new MatTableDataSource<TransactionModel>(this.stores);
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private transactionService: TransactionService,
+    private _snackBar: MatSnackBar,
+    private commonService: CommonService
+  ) {}
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.loadTransactions();
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateTransactionComponent, {
       width: "800px",
-      data: { firstName: this.FirstName, lastName: this.LastName },
+      data: new TransactionModel(),
     });
 
-    dialogRef.afterClosed().subscribe(({ firstName, lastName }) => {
-      this.FirstName = firstName;
-      this.LastName = lastName;
+    dialogRef.afterClosed().subscribe((formData) => {
+      if (formData) {
+        const remainingData = this.commonService.filterObject(formData);
+        this.transactionService
+          .createTransaction(remainingData)
+          .subscribe((res) => {
+            this.openSnackBar("Transaction added successfully..!");
+            this.loadTransactions();
+          });
+      }
+    });
+  }
+
+  loadTransactions(): void {
+    this.transactionService.getTransactions().subscribe((res) => {
+      this.stores = res as TransactionModel[];
+      this.dataSource = new MatTableDataSource<TransactionModel>(this.stores);
+    });
+  }
+
+  deleteTransaction(id: string): void {
+    this.transactionService.deleteTransaction(id).subscribe((res) => {
+      this.openSnackBar("Customer deleted successfully..!");
+      this.loadTransactions();
+    });
+  }
+
+  editTransaction(id: string): void {
+    const vanData = this.stores.find((t) => t.transaction_id === id);
+    const dialogRef = this.dialog.open(CreateTransactionComponent, {
+      width: "800px",
+      data: vanData,
+    });
+
+    dialogRef.afterClosed().subscribe((formData) => {
+      if (formData) {
+        const remainingData = this.commonService.filterObject(formData);
+        this.transactionService
+          .updateTransaction(id, remainingData)
+          .subscribe((res) => {
+            this.openSnackBar("Transaction updated successfully..!");
+            this.loadTransactions();
+          });
+      }
+    });
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "", {
+      horizontalPosition: "end",
+      verticalPosition: "top",
+      duration: 5 * 1000,
     });
   }
 }
 
-export interface Transaction {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export class TransactionModel {
+  transaction_id: string = "";
+  customer_id: string = "";
+  product_id: string = "";
+  transaction_status: string = "";
+  transaction_type: string = "";
+  start_date: string = "";
+  end_date: string = "";
+  store_id: string = "";
+  staff_id: string = "";
+  invoice_number: string = "";
+  trans_amount: number = 0;
+  paid_amount: number = 0;
+  garage_id: string = "";
+  van_id: string = "";
+  payment_mode: string = "";
+  financer: string = "";
+  down_payment: number = 0;
+  loan_amount: number = 0;
+  stakeholder_id: string = "";
+  paper_handover_date: string = "";
+  rto_paper_recv_date: string = "";
+  rto_reciept_recv: string = "";
+  drc_pending: number = 0;
+  hp_pending: number = 0;
 }
-
-export interface DialogData {
-  firstName: string;
-  lastName: string;
-}
-
-const ELEMENT_DATA: Transaction[] = [
-  { position: 1, name: "Hydrogen", weight: 1.0079, symbol: "H" },
-  { position: 2, name: "Helium", weight: 4.0026, symbol: "He" },
-  { position: 3, name: "Lithium", weight: 6.941, symbol: "Li" },
-  { position: 4, name: "Beryllium", weight: 9.0122, symbol: "Be" },
-  { position: 5, name: "Boron", weight: 10.811, symbol: "B" },
-  { position: 6, name: "Carbon", weight: 12.0107, symbol: "C" },
-  { position: 7, name: "Nitrogen", weight: 14.0067, symbol: "N" },
-  { position: 8, name: "Oxygen", weight: 15.9994, symbol: "O" },
-  { position: 9, name: "Fluorine", weight: 18.9984, symbol: "F" },
-  { position: 10, name: "Neon", weight: 20.1797, symbol: "Ne" },
-  { position: 11, name: "Sodium", weight: 22.9897, symbol: "Na" },
-  { position: 12, name: "Magnesium", weight: 24.305, symbol: "Mg" },
-  { position: 13, name: "Aluminum", weight: 26.9815, symbol: "Al" },
-  { position: 14, name: "Silicon", weight: 28.0855, symbol: "Si" },
-  { position: 15, name: "Phosphorus", weight: 30.9738, symbol: "P" },
-  { position: 16, name: "Sulfur", weight: 32.065, symbol: "S" },
-  { position: 17, name: "Chlorine", weight: 35.453, symbol: "Cl" },
-  { position: 18, name: "Argon", weight: 39.948, symbol: "Ar" },
-  { position: 19, name: "Potassium", weight: 39.0983, symbol: "K" },
-  { position: 20, name: "Calcium", weight: 40.078, symbol: "Ca" },
-];

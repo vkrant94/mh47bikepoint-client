@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { AppRoutes } from "./app.routing";
@@ -32,8 +32,9 @@ import { StaffsComponent } from "./staffs/staffs.component";
 import { CreateStaffComponent } from "./staffs/create-staff/create-staff.component";
 import { ProductsComponent } from "./products/products.component";
 import { CreateProductComponent } from "./products/create-product/create-product.component";
-import { StakeholdersComponent } from './stakeholders/stakeholders.component';
-import { CreateStakeholderComponent } from './stakeholders/create-stakeholder/create-stakeholder.component';
+import { StakeholdersComponent } from "./stakeholders/stakeholders.component";
+import { CreateStakeholderComponent } from "./stakeholders/create-stakeholder/create-stakeholder.component";
+import { MhSelectComponent } from "./common/mh-select/mh-select.component";
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { CreateStakeholderComponent } from './stakeholders/create-stakeholder/cr
     CreateProductComponent,
     StakeholdersComponent,
     CreateStakeholderComponent,
+    MhSelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,9 @@ import { CreateStakeholderComponent } from './stakeholders/create-stakeholder/cr
     MatInputModule,
     FlexLayoutModule,
     HttpClientModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     RouterModule.forRoot(AppRoutes),
   ],
