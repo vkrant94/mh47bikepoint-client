@@ -1,0 +1,68 @@
+<div *ngIf="isLoading">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+<div *ngIf="!isLoading">
+  <h1 mat-dialog-title>Add Stakeholder</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="data.stakeholder_name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select [(ngModel)]="data.type" name="type">
+        <mat-option *ngFor="let role of roles" [value]="role.value">
+          {{ role.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone</mat-label>
+      <input type="number" matInput [(ngModel)]="data.phone" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [(ngModel)]="data.email" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Address Line 1</mat-label>
+      <input type="text" matInput [(ngModel)]="data.address_line1" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Address Line 2</mat-label>
+      <input type="text" matInput [(ngModel)]="data.address_line2" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input type="text" matInput [(ngModel)]="data.city" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <input type="text" matInput [(ngModel)]="data.state" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Zip Code</mat-label>
+      <input type="number" matInput [(ngModel)]="data.zip_code" />
+    </mat-form-field>
+
+    <button (click)="fileInput.click()">
+      <mat-icon>library_add</mat-icon>
+      <span>Select</span>
+      <input
+        #fileInput
+        type="file"
+        (change)="processFile($event)"
+        style="display: none"
+      />
+    </button>
+    <div class="user-profile">
+      <div class="profile-img">
+        <img [src]="data.thumnail_url" alt="user" />
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  </div>
+</div>

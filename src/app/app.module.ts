@@ -32,6 +32,8 @@ import { StaffsComponent } from "./staffs/staffs.component";
 import { CreateStaffComponent } from "./staffs/create-staff/create-staff.component";
 import { ProductsComponent } from "./products/products.component";
 import { CreateProductComponent } from "./products/create-product/create-product.component";
+import { StakeholdersComponent } from './stakeholders/stakeholders.component';
+import { CreateStakeholderComponent } from './stakeholders/create-stakeholder/create-stakeholder.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { CreateProductComponent } from "./products/create-product/create-product
     CreateStaffComponent,
     ProductsComponent,
     CreateProductComponent,
+    StakeholdersComponent,
+    CreateStakeholderComponent,
   ],
   imports: [
     BrowserModule,

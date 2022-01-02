@@ -28,6 +28,12 @@ const MENUITEMS = [
     icon: "people",
   },
   {
+    state: "stakeholders",
+    type: "link",
+    name: "Stakeholders",
+    icon: "supervisor_account",
+  },
+  {
     state: "stores",
     type: "link",
     name: "Stores",

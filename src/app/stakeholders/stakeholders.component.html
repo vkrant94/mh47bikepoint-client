@@ -1,0 +1,110 @@
+<mat-card>
+  <mat-card-content>
+    <div class="trans-table-header">
+      <mat-card-title>Stakeholders</mat-card-title>
+      <div></div>
+      <button
+        mat-icon-button
+        class="actions"
+        title="Add Stakeholder"
+        (click)="openDialog()"
+      >
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+    <div>
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- stakeholder_name Column -->
+        <ng-container matColumnDef="stakeholder_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.stakeholder_name }}
+          </td>
+        </ng-container>
+
+        <!-- type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
+          <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+        </ng-container>
+
+        <!-- phone Column -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+          <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+        </ng-container>
+
+        <!-- email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <!-- address_line1 Column -->
+        <ng-container matColumnDef="address_line1">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Address 1</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.address_line1 }}
+          </td>
+        </ng-container>
+
+        <!-- address_line2 Column -->
+        <ng-container matColumnDef="address_line2">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Address 2</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.address_line2 }}
+          </td>
+        </ng-container>
+
+        <!-- city Column -->
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+          <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+        </ng-container>
+
+        <!-- state Column -->
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+          <td mat-cell *matCellDef="let element">{{ element.state }}</td>
+        </ng-container>
+
+        <!-- zip_code Column -->
+        <ng-container matColumnDef="zip_code">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Zip Code</th>
+          <td mat-cell *matCellDef="let element">{{ element.zip_code }}</td>
+        </ng-container>
+
+        <!-- actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-icon-button
+              class="actions"
+              title="Update Stakeholder"
+              (click)="editStakeholder(element.stakeholder_id)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              class="actions"
+              title="Add Stakeholder"
+              (click)="deleteStakeholder(element.stakeholder_id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <div class="no-records-container" *ngIf="stakeholders.length === 0">
+        <button mat-icon-button class="actions">
+          <mat-icon>info</mat-icon></button
+        >No Records Found
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
