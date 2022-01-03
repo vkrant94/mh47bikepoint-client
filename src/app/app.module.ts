@@ -35,6 +35,7 @@ import { CreateProductComponent } from "./products/create-product/create-product
 import { StakeholdersComponent } from "./stakeholders/stakeholders.component";
 import { CreateStakeholderComponent } from "./stakeholders/create-stakeholder/create-stakeholder.component";
 import { MhSelectComponent } from "./common/mh-select/mh-select.component";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { MhSelectComponent } from "./common/mh-select/mh-select.component";
     DemoMaterialModule,
     FormsModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatInputModule,
     FlexLayoutModule,
     HttpClientModule,

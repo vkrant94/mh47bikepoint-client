@@ -1,31 +1,31 @@
 <div>
   <h1 mat-dialog-title>Add Transaction</h1>
   <div mat-dialog-content>
-    <form [formGroup]="transactionGroup">
+    <div [formGroup]="transactionGroup">
       <app-mh-select
         label="Product Name"
         [formGroup]="transactionGroup"
-        formControl="product_id"
+        control="product_id"
         id="product_id"
         [items]="products"
       ></app-mh-select>
-      <!-- <app-mh-select
+      <app-mh-select
         label="Transaction Type"
         [formGroup]="transactionGroup"
-        formControl="transaction_type"
+        control="transaction_type"
         id="transaction_type"
         [items]="transTypes"
       ></app-mh-select>
       <app-mh-select
         label="Transaction Status"
         [formGroup]="transactionGroup"
-        formControl="transaction_status"
+        control="transaction_status"
         id="transaction_status"
         [items]="transStatus"
-      ></app-mh-select> -->
+      ></app-mh-select>
 
       <!-- DATE PICKER -->
-      <!-- <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill">
         <mat-label>Transaction Start Date</mat-label>
         <input
           matInput
@@ -37,10 +37,10 @@
           [for]="start_date"
         ></mat-datepicker-toggle>
         <mat-datepicker #start_date></mat-datepicker>
-      </mat-form-field> -->
+      </mat-form-field>
 
       <!-- DATE PICKER -->
-      <!-- <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill">
         <mat-label>Transaction End Date</mat-label>
         <input
           matInput
@@ -53,8 +53,8 @@
           [for]="end_date"
         ></mat-datepicker-toggle>
         <mat-datepicker #end_date></mat-datepicker>
-      </mat-form-field> -->
-    </form>
+      </mat-form-field>
+    </div>
   </div>
 
   <div mat-dialog-actions>

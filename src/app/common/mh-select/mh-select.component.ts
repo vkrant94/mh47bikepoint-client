@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
 import { PicklistModel } from "src/app/_models/PicklistModel";
 
 @Component({
@@ -10,7 +9,7 @@ import { PicklistModel } from "src/app/_models/PicklistModel";
 export class MhSelectComponent implements OnInit {
   @Input() label: string = "";
   @Input() id: string = "";
-  @Input() formControl: any;
+  @Input() control: any;
   @Input() formGroup: any;
   @Input() items: PicklistModel[] = [];
   constructor() {}

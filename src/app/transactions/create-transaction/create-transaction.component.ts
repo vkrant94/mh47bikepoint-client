@@ -106,6 +106,10 @@ export class CreateTransactionComponent implements OnInit {
         "stakeholder_id"
       );
     });
+
+    this.transactionGroup.valueChanges.subscribe((res) => {
+      console.log(res);
+    });
   }
 
   onNoClick(): void {
@@ -113,7 +117,9 @@ export class CreateTransactionComponent implements OnInit {
   }
 
   get isTransEndDateEnabled(): boolean {
-    return this.data.transaction_status !== "Completed";
+    return (
+      this.transactionGroup.controls["transaction_status"].value !== "Completed"
+    );
   }
 }
 
