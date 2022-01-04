@@ -12,6 +12,7 @@ export class MhSelectComponent implements OnInit {
   @Input() control: any;
   @Input() formGroup: any;
   @Input() items: PicklistModel[] = [];
+  @Input() visible: boolean = true;
   constructor() {}
 
   ngOnInit(): void {}

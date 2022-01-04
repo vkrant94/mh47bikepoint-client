@@ -27,7 +27,7 @@ export class CreateProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.productDefaults().subscribe((res: any) => {
-      const { bikeCategories, brands, customers } = res;
+      const { bikeCategories, brands, dealers } = res;
       this.brands = this.commonService.populatePicklistOptions(
         brands,
         "brand_name",
@@ -41,9 +41,9 @@ export class CreateProductComponent implements OnInit {
       );
 
       this.customers = this.commonService.populatePicklistOptions(
-        customers,
-        "customer_name",
-        "customer_id"
+        dealers,
+        "dealer_name",
+        "dealer_id"
       );
     });
   }

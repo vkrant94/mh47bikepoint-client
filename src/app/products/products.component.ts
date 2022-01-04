@@ -19,9 +19,8 @@ export class ProductsComponent implements AfterViewInit {
     "brand_name",
     "category_name",
     "model_year",
-    "list_price",
     "model_number",
-    "owner_name",
+    "stakeholder_name",
     "rc_number",
     "chassi_number",
     "vehicle_number",
@@ -113,7 +112,7 @@ export class ProductModel {
   model_year = "";
   list_price = "";
   model_number = "";
-  owner_id = "";
+  stakeholder_id = "";
   rc_number = "";
   chassi_number = "";
   colour = "";

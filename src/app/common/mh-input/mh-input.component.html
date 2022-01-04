@@ -1,0 +1,6 @@
+<form [formGroup]="formGroup">
+  <mat-form-field *ngIf="visible">
+    <mat-label>{{ label }}</mat-label>
+    <input [type]="type" matInput [formControlName]="control" />
+  </mat-form-field>
+</form>

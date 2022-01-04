@@ -13,11 +13,9 @@ import { CreateTransactionComponent } from "./create-transaction/create-transact
 })
 export class TransactionsComponent implements AfterViewInit {
   displayedColumns: string[] = [
-    "start_date",
-    "product_name",
     "transaction_type",
+    "start_date",
     "transaction_status",
-    "invoice_number",
     "trans_amount",
     "actions",
   ];

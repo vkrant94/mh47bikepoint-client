@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup">
-  <mat-form-field appearance="fill">
+  <mat-form-field *ngIf="visible">
     <mat-label>{{ label }}</mat-label>
     <mat-select [formControlName]="control">
       <mat-option *ngFor="let item of items" [value]="item.value">

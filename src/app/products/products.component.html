@@ -40,14 +40,6 @@
           <td mat-cell *matCellDef="let element">{{ element.model_year }}</td>
         </ng-container>
 
-        <!-- list_price Column -->
-        <ng-container matColumnDef="list_price">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>List Price</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.list_price }}
-          </td>
-        </ng-container>
-
         <!-- model_number Column -->
         <ng-container matColumnDef="model_number">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Model No.</th>
@@ -56,10 +48,12 @@
           </td>
         </ng-container>
 
-        <!-- owner_name Column -->
-        <ng-container matColumnDef="owner_name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Owner</th>
-          <td mat-cell *matCellDef="let element">{{ element.owner_name }}</td>
+        <!-- stakeholder_name Column -->
+        <ng-container matColumnDef="stakeholder_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Stakeholder</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.stakeholder_name }}
+          </td>
         </ng-container>
 
         <!-- rc_number Column -->

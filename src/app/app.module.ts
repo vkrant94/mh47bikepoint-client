@@ -36,6 +36,7 @@ import { StakeholdersComponent } from "./stakeholders/stakeholders.component";
 import { CreateStakeholderComponent } from "./stakeholders/create-stakeholder/create-stakeholder.component";
 import { MhSelectComponent } from "./common/mh-select/mh-select.component";
 import { MatSelectModule } from "@angular/material/select";
+import { MhInputComponent } from './common/mh-input/mh-input.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { MatSelectModule } from "@angular/material/select";
     StakeholdersComponent,
     CreateStakeholderComponent,
     MhSelectComponent,
+    MhInputComponent,
   ],
   imports: [
     BrowserModule,

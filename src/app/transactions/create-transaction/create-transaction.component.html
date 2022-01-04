@@ -3,18 +3,12 @@
   <div mat-dialog-content>
     <div [formGroup]="transactionGroup">
       <app-mh-select
-        label="Product Name"
-        [formGroup]="transactionGroup"
-        control="product_id"
-        id="product_id"
-        [items]="products"
-      ></app-mh-select>
-      <app-mh-select
         label="Transaction Type"
         [formGroup]="transactionGroup"
         control="transaction_type"
         id="transaction_type"
         [items]="transTypes"
+        [visible]="true"
       ></app-mh-select>
       <app-mh-select
         label="Transaction Status"
@@ -22,10 +16,11 @@
         control="transaction_status"
         id="transaction_status"
         [items]="transStatus"
+        [visible]="true"
       ></app-mh-select>
 
       <!-- DATE PICKER -->
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Transaction Start Date</mat-label>
         <input
           matInput
@@ -40,13 +35,13 @@
       </mat-form-field>
 
       <!-- DATE PICKER -->
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Transaction End Date</mat-label>
         <input
           matInput
           [matDatepicker]="end_date"
           formControlName="end_date"
-          [disabled]="isTransEndDateEnabled"
+          [disabled]="isEndDateEnabled"
         />
         <mat-datepicker-toggle
           matSuffix
@@ -54,11 +49,57 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #end_date></mat-datepicker>
       </mat-form-field>
+
+      <app-mh-select
+        label="Store Name"
+        [formGroup]="transactionGroup"
+        control="store_id"
+        id="store_id"
+        [items]="stores"
+        [visible]="true"
+      ></app-mh-select>
+
+      <app-mh-select
+        label="Employee Name"
+        [formGroup]="transactionGroup"
+        control="staff_id"
+        id="staff_id"
+        [items]="staffs"
+        [visible]="isStaffVisible"
+      ></app-mh-select>
+
+      <app-mh-select
+        label="Product Name"
+        [formGroup]="transactionGroup"
+        control="product_id"
+        id="product_id"
+        [items]="products"
+        [visible]="isProductsVisible"
+      ></app-mh-select>
+
+      <app-mh-input
+        label="Amount"
+        [formGroup]="transactionGroup"
+        control="trans_amount"
+        type="number"
+      ></app-mh-input>
+      <app-mh-input
+        label="Paid Amount"
+        [formGroup]="transactionGroup"
+        control="paid_amount"
+        type="number"
+      ></app-mh-input>
     </div>
   </div>
 
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    <button
+      mat-button
+      [mat-dialog-close]="transactionGroup.value"
+      cdkFocusInitial
+    >
+      Ok
+    </button>
   </div>
 </div>
