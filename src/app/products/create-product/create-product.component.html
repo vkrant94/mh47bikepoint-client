@@ -29,24 +29,12 @@
       <input type="number" matInput [(ngModel)]="data.model_year" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>List Price</mat-label>
-      <input type="number" matInput [(ngModel)]="data.list_price" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Model Number</mat-label>
-      <input type="number" matInput [(ngModel)]="data.model_number" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
       <mat-label>Dealer</mat-label>
       <mat-select [(ngModel)]="data.stakeholder_id" name="stakeholder_id">
         <mat-option *ngFor="let customer of customers" [value]="customer.value">
           {{ customer.label }}
         </mat-option>
       </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>RC Number</mat-label>
-      <input type="number" matInput [(ngModel)]="data.rc_number" />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Chassi Number</mat-label>

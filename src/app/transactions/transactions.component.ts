@@ -16,6 +16,8 @@ export class TransactionsComponent implements AfterViewInit {
     "transaction_type",
     "start_date",
     "transaction_status",
+    "product_name",
+    "staff_name",
     "trans_amount",
     "actions",
   ];
