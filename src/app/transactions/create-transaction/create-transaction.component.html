@@ -10,6 +10,34 @@
         [items]="transTypes"
         [visible]="true"
       ></app-mh-select>
+
+      <app-mh-select
+        label="Product Name"
+        [formGroup]="transactionGroup"
+        control="product_id"
+        id="product_id"
+        [items]="products"
+        [visible]="isProductsVisible"
+      ></app-mh-select>
+
+      <app-mh-select
+        label="Store Name"
+        [formGroup]="transactionGroup"
+        control="store_id"
+        id="store_id"
+        [items]="stores"
+        [visible]="true"
+      ></app-mh-select>
+
+      <app-mh-select
+        label="Employee Name"
+        [formGroup]="transactionGroup"
+        control="staff_id"
+        id="staff_id"
+        [items]="staffs"
+        [visible]="isStaffVisible"
+      ></app-mh-select>
+
       <app-mh-select
         label="Transaction Status"
         [formGroup]="transactionGroup"
@@ -50,39 +78,13 @@
         <mat-datepicker #end_date></mat-datepicker>
       </mat-form-field>
 
-      <app-mh-select
-        label="Store Name"
-        [formGroup]="transactionGroup"
-        control="store_id"
-        id="store_id"
-        [items]="stores"
-        [visible]="true"
-      ></app-mh-select>
-
-      <app-mh-select
-        label="Employee Name"
-        [formGroup]="transactionGroup"
-        control="staff_id"
-        id="staff_id"
-        [items]="staffs"
-        [visible]="isStaffVisible"
-      ></app-mh-select>
-
-      <app-mh-select
-        label="Product Name"
-        [formGroup]="transactionGroup"
-        control="product_id"
-        id="product_id"
-        [items]="products"
-        [visible]="isProductsVisible"
-      ></app-mh-select>
-
       <app-mh-input
         label="Amount"
         [formGroup]="transactionGroup"
         control="trans_amount"
         type="number"
       ></app-mh-input>
+
       <app-mh-input
         label="Paid Amount"
         [formGroup]="transactionGroup"

@@ -1,4 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
 import * as Chartist from "chartist";
 import { ChartType, ChartEvent } from "ng-chartist";
 import { ChartModule } from "primeng/chart";
@@ -19,21 +25,18 @@ export interface Chart {
   templateUrl: "./sales-overview-grap.component.html",
   styleUrls: ["./sales-overview-grap.component.css"],
 })
-export class SalesOverviewGrapComponent implements OnInit {
+export class SalesOverviewGrapComponent implements OnInit, OnChanges {
+  @Input() monthlySales: any;
   data: any;
 
   options: any;
 
-  constructor() {
-    this.data = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
-      datasets: [
-        {
-          label: "First Dataset",
-          data: [65, 59, 80, 81, 56, 55, 40],
-        },
-      ],
-    };
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.data = this.monthlySales;
 
     this.options = {
       title: {
@@ -46,6 +49,4 @@ export class SalesOverviewGrapComponent implements OnInit {
       },
     };
   }
-
-  ngOnInit(): void {}
 }
