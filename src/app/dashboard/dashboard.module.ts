@@ -13,6 +13,10 @@ import { ContactsComponent } from "./dashboard-components/contacts/contacts.comp
 import { ActivityComponent } from "./dashboard-components/activity/activity.component";
 import { ChartModule } from "primeng/chart";
 import { TableModule } from "primeng/table";
+import { MhSelectComponent } from "../common/mh-select/mh-select.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   imports: [
@@ -22,6 +26,10 @@ import { TableModule } from "primeng/table";
     ChartistModule,
     ChartModule,
     TableModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
     RouterModule.forChild(DashboardRoutes),
   ],
   declarations: [

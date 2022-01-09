@@ -7,11 +7,6 @@ import { DashboardService } from "../_services/dashboard.service";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements AfterViewInit {
-  dashboardContents: any;
-  constructor(private dasboardService: DashboardService) {}
-  ngAfterViewInit() {
-    this.dasboardService.getDashboard().subscribe((res) => {
-      this.dashboardContents = res;
-    });
-  }
+  constructor() {}
+  ngAfterViewInit() {}
 }

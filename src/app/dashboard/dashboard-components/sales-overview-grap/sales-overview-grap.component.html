@@ -1,5 +1,36 @@
 <mat-card>
   <mat-card-content>
-    <p-chart type="line" [data]="data" [options]="options"></p-chart>
+    <div class="example-margin">
+      <mat-spinner *ngIf="!monthlySales"></mat-spinner>
+    </div>
+    <div
+      *ngIf="monthlySales"
+      [formGroup]="salesOverviewGroup"
+      class="input-group"
+    >
+      <mat-form-field appearance="fill">
+        <mat-label>Year</mat-label>
+        <mat-select
+          formControlName="year"
+          (selectionChange)="onYearSelected($event)"
+        >
+          <mat-option *ngFor="let item of years" [value]="item.value">
+            {{ item.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Month</mat-label>
+        <mat-select
+          formControlName="month"
+          (selectionChange)="onMonthSelected($event)"
+        >
+          <mat-option *ngFor="let item of months" [value]="item.value">
+            {{ item.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <p-chart type="line" [data]="monthlySales" [options]="options"></p-chart>
   </mat-card-content>
 </mat-card>

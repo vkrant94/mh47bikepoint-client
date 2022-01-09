@@ -28,4 +28,10 @@ export class CommonService {
       return { label: item[labelKey], value: item[valueKey] };
     });
   }
+
+  createQueryString(queryObject: any): string[] {
+    return Object.keys(queryObject).map((key) => {
+      return `${key}=${queryObject[key]}`;
+    });
+  }
 }

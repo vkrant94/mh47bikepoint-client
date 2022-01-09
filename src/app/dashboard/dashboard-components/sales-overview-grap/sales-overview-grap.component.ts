@@ -1,16 +1,9 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from "@angular/core";
+import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
 import * as Chartist from "chartist";
 import { ChartType, ChartEvent } from "ng-chartist";
-import { ChartModule } from "primeng/chart";
-
-declare var require: any;
-const data = require("./data.json");
+import { Months, Years } from "src/app/app.constants";
+import { DashboardService } from "src/app/_services/dashboard.service";
 
 export interface Chart {
   type: ChartType;
@@ -26,27 +19,75 @@ export interface Chart {
   styleUrls: ["./sales-overview-grap.component.css"],
 })
 export class SalesOverviewGrapComponent implements OnInit, OnChanges {
-  @Input() monthlySales: any;
-  data: any;
-
+  dashboardContents: any;
+  monthlySales: any;
   options: any;
+  salesOverviewGroup = new FormGroup({
+    year: new FormControl("2022"),
+    month: new FormControl(""),
+  });
+  years = Years;
+  months = Months;
 
-  constructor() {}
+  constructor(private dasboardService: DashboardService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadGraph();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.data = this.monthlySales;
-
     this.options = {
-      title: {
-        display: true,
-        text: "My Title",
-        fontSize: 16,
+      plugins: {
+        legend: {
+          labels: {
+            color: "#495057",
+          },
+        },
       },
-      legend: {
-        position: "bottom",
+      scales: {
+        x: {
+          ticks: {
+            color: "#495057",
+          },
+          grid: {
+            color: "#ebedef",
+          },
+        },
+        y: {
+          ticks: {
+            color: "#495057",
+          },
+          grid: {
+            color: "#ebedef",
+          },
+        },
       },
     };
+  }
+
+  onYearSelected(event: any) {
+    this.salesOverviewGroup.controls["year"].setValue(event.value);
+    this.loadGraph();
+  }
+
+  onMonthSelected(event: any) {
+    this.salesOverviewGroup.controls["month"].setValue(event.value);
+    this.loadGraph();
+  }
+
+  get year(): string {
+    return this.salesOverviewGroup.controls["year"].value;
+  }
+
+  get month(): string {
+    return this.salesOverviewGroup.controls["month"].value;
+  }
+
+  loadGraph(): void {
+    this.dasboardService
+      .getDashboard({ year: this.year, month: this.month })
+      .subscribe((res: any) => {
+        this.monthlySales = res.monthlySales;
+      });
   }
 }

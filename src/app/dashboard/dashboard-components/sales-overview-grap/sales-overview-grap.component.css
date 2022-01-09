@@ -1,0 +1,11 @@
+.example-margin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5em;
+}
