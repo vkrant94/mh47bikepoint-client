@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
 import * as Chartist from "chartist";
 import { ChartType, ChartEvent } from "ng-chartist";
 import { Subscription } from "rxjs";
+import { Months, Years } from "src/app/app.constants";
 import { AppConfig } from "src/app/_models/appConfig.model";
 import { DashboardService } from "src/app/_services/dashboard.service";
 
@@ -21,6 +23,12 @@ export interface Chart {
 export class VisiterGraphComponent implements OnInit {
   data: any;
   chartOptions: any;
+  salesOverviewGroup = new FormGroup({
+    year: new FormControl("2022"),
+    month: new FormControl(""),
+  });
+  years = Years;
+  months = Months;
 
   constructor(private dashboardService: DashboardService) {}
 
@@ -28,11 +36,19 @@ export class VisiterGraphComponent implements OnInit {
     this.getVisitors();
   }
 
+  get year(): string {
+    return this.salesOverviewGroup.controls["year"].value;
+  }
+
+  get month(): string {
+    return this.salesOverviewGroup.controls["month"].value;
+  }
+
   getVisitors(): void {
-    this.dashboardService.getVisitorsOverview().subscribe((res: any) => {
-      setTimeout(() => {
+    this.dashboardService
+      .getVisitorsOverview({ year: this.year, month: this.month })
+      .subscribe((res: any) => {
         this.data = res.visitors;
-      }, 2000);
-    });
+      });
   }
 }

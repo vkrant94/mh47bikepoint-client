@@ -20,7 +20,11 @@ export class DashboardService {
     return this.http.get(`${this.SALES_OVERVIEW}?${queryString}`);
   }
 
-  getVisitorsOverview() {
-    return this.http.get(`${this.VISITORS}`);
+  getVisitorsOverview(queryObject: any) {
+    const filteredObject = this.commonService.filterObject(queryObject);
+    const queryString = this.commonService
+      .createQueryString(filteredObject)
+      .join("&");
+    return this.http.get(`${this.VISITORS}?${queryString}`);
   }
 }
