@@ -1,10 +1,16 @@
 <mat-card>
   <mat-card-content>
-    <p-chart
-      type="pie"
-      [data]="data"
-      [options]="chartOptions"
-      [style]="{ width: '40%' }"
-    ></p-chart>
+    <div class="example-margin">
+      <mat-spinner *ngIf="!data"></mat-spinner>
+    </div>
+    <div *ngIf="data">
+      <h3>Visitors</h3>
+      <p-chart
+        type="pie"
+        [data]="data"
+        [options]="chartOptions"
+        [style]="{ width: '40%' }"
+      ></p-chart>
+    </div>
   </mat-card-content>
 </mat-card>

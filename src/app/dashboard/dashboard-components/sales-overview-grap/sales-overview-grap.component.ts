@@ -85,7 +85,7 @@ export class SalesOverviewGrapComponent implements OnInit, OnChanges {
 
   loadGraph(): void {
     this.dasboardService
-      .getDashboard({ year: this.year, month: this.month })
+      .getSalesOverview({ year: this.year, month: this.month })
       .subscribe((res: any) => {
         this.monthlySales = res.monthlySales;
       });

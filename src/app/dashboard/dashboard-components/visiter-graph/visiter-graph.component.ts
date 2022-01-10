@@ -3,6 +3,7 @@ import * as Chartist from "chartist";
 import { ChartType, ChartEvent } from "ng-chartist";
 import { Subscription } from "rxjs";
 import { AppConfig } from "src/app/_models/appConfig.model";
+import { DashboardService } from "src/app/_services/dashboard.service";
 
 export interface Chart {
   type: ChartType;
@@ -20,21 +21,18 @@ export interface Chart {
 export class VisiterGraphComponent implements OnInit {
   data: any;
   chartOptions: any;
-  subscription!: Subscription;
-  config!: AppConfig;
 
-  constructor() {}
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
-    this.data = {
-      labels: ["With Gear", "Without Gear", "E-Bikes"],
-      datasets: [
-        {
-          data: [300, 50, 100],
-          backgroundColor: ["#42A5F5", "#66BB6A", "#FFA726"],
-          hoverBackgroundColor: ["#64B5F6", "#81C784", "#FFB74D"],
-        },
-      ],
-    };
+    this.getVisitors();
+  }
+
+  getVisitors(): void {
+    this.dashboardService.getVisitorsOverview().subscribe((res: any) => {
+      setTimeout(() => {
+        this.data = res.visitors;
+      }, 2000);
+    });
   }
 }

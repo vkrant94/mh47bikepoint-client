@@ -8,14 +8,19 @@ import { CommonService } from "./common.service";
 })
 export class DashboardService {
   DASHBOARD: string = `${BASE_URL}/dashboard`;
-  SALES_OVERVIEW: string = `${this.DASHBOARD}?year=2021&month=December`;
+  SALES_OVERVIEW: string = `${this.DASHBOARD}/salesoverview`;
+  VISITORS: string = `${this.DASHBOARD}/visitors`;
   constructor(private http: HttpClient, private commonService: CommonService) {}
 
-  getDashboard(queryObject: any) {
+  getSalesOverview(queryObject: any) {
     const filteredObject = this.commonService.filterObject(queryObject);
     const queryString = this.commonService
       .createQueryString(filteredObject)
       .join("&");
-    return this.http.get(`${this.DASHBOARD}?${queryString}`);
+    return this.http.get(`${this.SALES_OVERVIEW}?${queryString}`);
+  }
+
+  getVisitorsOverview() {
+    return this.http.get(`${this.VISITORS}`);
   }
 }
