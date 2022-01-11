@@ -3,3 +3,18 @@
   align-items: center;
   justify-content: center;
 }
+
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5em;
+}
+
+.visitor-header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-weight: 400;
+  font-size: larger;
+  padding-bottom: 1em;
+}

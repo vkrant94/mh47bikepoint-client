@@ -23,7 +23,7 @@ export interface Chart {
 export class VisiterGraphComponent implements OnInit {
   data: any;
   chartOptions: any;
-  salesOverviewGroup = new FormGroup({
+  visitorsOverview = new FormGroup({
     year: new FormControl("2022"),
     month: new FormControl(""),
   });
@@ -33,18 +33,28 @@ export class VisiterGraphComponent implements OnInit {
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
-    this.getVisitors();
+    this.loadVisitors();
   }
 
   get year(): string {
-    return this.salesOverviewGroup.controls["year"].value;
+    return this.visitorsOverview.controls["year"].value;
   }
 
   get month(): string {
-    return this.salesOverviewGroup.controls["month"].value;
+    return this.visitorsOverview.controls["month"].value;
   }
 
-  getVisitors(): void {
+  onYearSelected(event: any) {
+    this.visitorsOverview.controls["year"].setValue(event.value);
+    this.loadVisitors();
+  }
+
+  onMonthSelected(event: any) {
+    this.visitorsOverview.controls["month"].setValue(event.value);
+    this.loadVisitors();
+  }
+
+  loadVisitors(): void {
     this.dashboardService
       .getVisitorsOverview({ year: this.year, month: this.month })
       .subscribe((res: any) => {

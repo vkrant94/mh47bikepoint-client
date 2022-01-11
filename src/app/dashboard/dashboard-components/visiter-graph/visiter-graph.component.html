@@ -4,7 +4,31 @@
       <mat-spinner *ngIf="!data"></mat-spinner>
     </div>
     <div *ngIf="data">
-      <h3>Visitors</h3>
+      <div [formGroup]="visitorsOverview" class="input-group">
+        <mat-form-field>
+          <mat-label>Year</mat-label>
+          <mat-select
+            formControlName="year"
+            (selectionChange)="onYearSelected($event)"
+          >
+            <mat-option *ngFor="let item of years" [value]="item.value">
+              {{ item.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Month</mat-label>
+          <mat-select
+            formControlName="month"
+            (selectionChange)="onMonthSelected($event)"
+          >
+            <mat-option *ngFor="let item of months" [value]="item.value">
+              {{ item.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="visitor-header">Visitors</div>
       <p-chart
         type="pie"
         [data]="data"
