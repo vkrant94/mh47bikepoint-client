@@ -1,4 +1,4 @@
-<div *ngIf="isLoading">
+<div *ngIf="isLoading" class="centered-div">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
 </div>
 <div *ngIf="!isLoading">
@@ -51,14 +51,22 @@
         style="display: none"
       />
     </button>
-    <div class="user-profile">
-      <div class="profile-img">
-        <img [src]="data.thumnail_url" alt="user" />
-      </div>
+    <div class="image-cropper-container">
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1 / 1"
+        [resizeToWidth]="256"
+        [cropperMinWidth]="128"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+      ></image-cropper>
+
+      <img [src]="croppedImage" />
     </div>
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    <button mat-button (click)="onFormSubmit()" cdkFocusInitial>Ok</button>
   </div>
 </div>

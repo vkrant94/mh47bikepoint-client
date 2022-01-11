@@ -37,6 +37,7 @@ import { CreateStakeholderComponent } from "./stakeholders/create-stakeholder/cr
 import { MhSelectComponent } from "./common/mh-select/mh-select.component";
 import { MatSelectModule } from "@angular/material/select";
 import { MhInputComponent } from "./common/mh-input/mh-input.component";
+import { ImageCropperModule } from "ngx-image-cropper";
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { MhInputComponent } from "./common/mh-input/mh-input.component";
     HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,
+    ImageCropperModule,
     SharedModule,
     RouterModule.forRoot(AppRoutes),
   ],
