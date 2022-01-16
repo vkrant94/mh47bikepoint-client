@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+.float-button {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #1e88e5;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+}
+
+.float-button mat-icon {
+  position: relative;
+  top: 20px;
+  cursor: pointer;
+}

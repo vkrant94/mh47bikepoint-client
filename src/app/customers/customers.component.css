@@ -17,3 +17,11 @@ table {
   justify-content: center;
   align-items: center;
 }
+
+.example-card {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+  row-gap: 20px;
+  flex-wrap: wrap;
+}

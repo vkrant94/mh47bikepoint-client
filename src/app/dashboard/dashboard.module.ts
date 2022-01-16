@@ -13,10 +13,10 @@ import { ContactsComponent } from "./dashboard-components/contacts/contacts.comp
 import { ActivityComponent } from "./dashboard-components/activity/activity.component";
 import { ChartModule } from "primeng/chart";
 import { TableModule } from "primeng/table";
-import { MhSelectComponent } from "../common/mh-select/mh-select.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
+import { PersonalExpenseGraphComponent } from "./dashboard-components/personal-expense-graph/personal-expense-graph.component";
 
 @NgModule({
   imports: [
@@ -39,6 +39,7 @@ import { MatSelectModule } from "@angular/material/select";
     StickerComponent,
     ContactsComponent,
     ActivityComponent,
+    PersonalExpenseGraphComponent,
   ],
 })
 export class DashboardModule {}

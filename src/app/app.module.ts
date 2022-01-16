@@ -38,6 +38,9 @@ import { MhSelectComponent } from "./common/mh-select/mh-select.component";
 import { MatSelectModule } from "@angular/material/select";
 import { MhInputComponent } from "./common/mh-input/mh-input.component";
 import { ImageCropperModule } from "ngx-image-cropper";
+import { ToastModule } from "primeng/toast";
+import { CardModule } from "primeng/card";
+import { AvatarModule } from "primeng/avatar";
 
 @NgModule({
   declarations: [
@@ -79,6 +82,9 @@ import { ImageCropperModule } from "ngx-image-cropper";
     ReactiveFormsModule,
     ImageCropperModule,
     SharedModule,
+    ToastModule,
+    CardModule,
+    AvatarModule,
     RouterModule.forRoot(AppRoutes),
   ],
   providers: [
