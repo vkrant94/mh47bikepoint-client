@@ -22,3 +22,8 @@ export const Months: PicklistModel[] = [
   { label: "November", value: "November" },
   { label: "December", value: "December" },
 ];
+
+export const FilterKeys: PicklistModel[] = [
+  DefaultSelect,
+  { label: "Amount", value: "paid_amount" },
+];

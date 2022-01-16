@@ -2,7 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import * as Chartist from "chartist";
 import { ChartType, ChartEvent } from "ng-chartist";
-import { Months, Years } from "src/app/app.constants";
+import { FilterKeys, Months, Years } from "src/app/app.constants";
 import { DashboardService } from "src/app/_services/dashboard.service";
 
 export interface Chart {
@@ -25,9 +25,11 @@ export class SalesOverviewGrapComponent implements OnInit, OnChanges {
   salesOverviewGroup = new FormGroup({
     year: new FormControl("2022"),
     month: new FormControl(""),
+    filter: new FormControl(""),
   });
   years = Years;
   months = Months;
+  filterKeys = FilterKeys;
 
   constructor(private dasboardService: DashboardService) {}
 
@@ -75,6 +77,11 @@ export class SalesOverviewGrapComponent implements OnInit, OnChanges {
     this.loadGraph();
   }
 
+  onFilterSelected(event: any) {
+    this.salesOverviewGroup.controls["filter"].setValue(event.value);
+    this.loadGraph();
+  }
+
   get year(): string {
     return this.salesOverviewGroup.controls["year"].value;
   }
@@ -85,7 +92,7 @@ export class SalesOverviewGrapComponent implements OnInit, OnChanges {
 
   loadGraph(): void {
     this.dasboardService
-      .getSalesOverview({ year: this.year, month: this.month })
+      .getSalesOverview(this.salesOverviewGroup.value)
       .subscribe((res: any) => {
         this.monthlySales = res.monthlySales;
       });

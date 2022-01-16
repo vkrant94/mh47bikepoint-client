@@ -110,6 +110,20 @@ export class CreateTransactionComponent implements OnInit {
     );
   }
 
+  get isStoreVisible(): boolean {
+    return [
+      "Salary",
+      "Bike Purchase",
+      "Bike Sale",
+      "Staff Welfare",
+      "Conveyance",
+      "Shop Maintainence",
+      "RTO Expenditure",
+      "Towing",
+      "Electricity Bill",
+    ].includes(this.transactionGroup.controls["transaction_type"].value);
+  }
+
   get isProductsVisible(): boolean {
     return [
       "Bike Purchase",
@@ -164,6 +178,7 @@ const TransactionTypes: PicklistModel[] = [
   { label: "Shop Maintainence", value: "Shop Maintainence" },
   { label: "Conveyance", value: "Conveyance" },
   { label: "Staff Welfare", value: "Staff Welfare" },
+  { label: "Personal", value: "Personal" },
 ];
 
 const TransactionStatus: PicklistModel[] = [

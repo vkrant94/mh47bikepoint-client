@@ -30,7 +30,18 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>Filter By</mat-label>
+        <mat-select
+          formControlName="filter"
+          (selectionChange)="onFilterSelected($event)"
+        >
+          <mat-option *ngFor="let item of filterKeys" [value]="item.value">
+            {{ item.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-    <p-chart type="line" [data]="monthlySales" [options]="options"></p-chart>
+    <p-chart type="bar" [data]="monthlySales" [options]="options"></p-chart>
   </mat-card-content>
 </mat-card>
